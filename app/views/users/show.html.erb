@@ -1,0 +1,4 @@
+<%= render "users/login" %>
+
+<h2>Welcome!</h2>
+<p> <%= User.find_by(id: params[:id]).email %> </p>
