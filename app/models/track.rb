@@ -17,7 +17,7 @@ class Track < ActiveRecord::Base
 	validates :track_type, presence: true
 	validates :lyrics, presence: true
 
-	belongs_to 'album'
+	belongs_to :album,
 	dependent: :destroy
 
 end

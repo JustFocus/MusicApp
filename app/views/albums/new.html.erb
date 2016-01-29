@@ -1,0 +1,36 @@
+<h1>Create a New Album!</h1>
+
+<div class="container">
+      <% flash.each do |key, value| %>
+        <div class="alert alert-<%= key %>"><%= value %></div>
+				<br>
+      <% end %>
+</div>
+
+<form action=" <%= albums_url %>" method = 'post' >
+	<input
+	type="hidden"
+	name="authenticity_token"
+	value="<%= form_authenticity_token %>">
+<label for="band">
+  <span>Band Name:</span>
+  <select id="band" name="album[band_id]">
+    <% Band.all.each do |band| %>
+      <option value=<%= band.id %>><%= band.name %></option>
+    <% end %>
+  </select>
+</label>
+<br>
+<label for='name'>Album Name:</label>
+<input type='text'
+			name='album[name]'
+			id='name'
+			value=''>
+<br>
+  <input type='radio' name='album[album_type]' id="album_type" value="LIVE" />
+  <label for="album_type">Live</label>
+  <input type='radio' name='album[album_type]' id="album_type" value="STUDIO"  />
+  <label for="album_type">Studio</label>
+<br>
+<br>
+<input type='submit'>

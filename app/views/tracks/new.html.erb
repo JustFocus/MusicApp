@@ -1,0 +1,42 @@
+<h1>Create a New Track!</h1>
+
+<div class="container">
+      <% flash.each do |key, value| %>
+        <div class="alert alert-<%= key %>"><%= value %></div>
+				<br>
+      <% end %>
+</div>
+
+<form action=" <%= tracks_url %>" method = 'post' >
+	<input
+	type="hidden"
+	name="authenticity_token"
+	value="<%= form_authenticity_token %>">
+<label for="band">
+  <span>Band Name:</span>
+  <select id="band" name="track[album_id]">
+    <% Album.all.each do |album| %>
+      <option value=<%= album.id %>><%= album.name %></option>
+    <% end %>
+  </select>
+</label>
+<br>
+
+  <input type='radio' name='track[track_type]' id="track_type" value="REGULAR" />
+  <label for="track_type">Regular</label>
+  <input type='radio' name='track[track_type]' id="track_type" value="BONUS"  />
+  <label for="track_type">Bonus</label>
+<br>
+<br>
+<label for='name'>Track Name:</label>
+<input type='text'
+			name='track[name]'
+			id='name'
+			value=''>
+<br>
+
+  Lyrics
+  <textarea name="track[lyrics]"></textarea>
+</label>
+<br>
+<input type='submit'>

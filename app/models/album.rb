@@ -15,6 +15,8 @@ class Album < ActiveRecord::Base
 	validates :name, presence: true
 	validates :album_type, presence: true
 
-	belongs_to 'band',
+	belongs_to :band,
 	dependent: :destroy
+
+	has_many :tracks
 end
